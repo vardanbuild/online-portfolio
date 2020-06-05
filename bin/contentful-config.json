@@ -261,7 +261,7 @@
         },
         {
           "id": "projects",
-          "name": "Projects",
+          "name": "Open-sourced Projects",
           "type": "Array",
           "localized": false,
           "required": false,
