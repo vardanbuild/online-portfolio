@@ -4,58 +4,145 @@ import Triangle from '../components/Triangle';
 import { StaticQuery, graphql } from 'gatsby';
 import { CardContainer, Card } from '../components/Card';
 import Fade from 'react-reveal/Fade';
+import { Text, Flex, Box } from 'rebass/styled-components';
+import styled from 'styled-components';
+import SocialLink from '../components/SocialLink';
+import ImageSubtitle from '../components/ImageSubtitle';
+import Hide from '../components/Hide';
 
 const Background = () => (
-    <div>
-      <Triangle
-        color="secondaryLight"
-        height={['50vh', '20vh']}
-        width={['50vw', '50vw']}
-        invertY
-      />
-  
-      <Triangle
-        color="primaryDark"
-        height={['20vh', '40vh']}
-        width={['75vw', '70vw']}
-        invertX
-      />
-  
-      <Triangle
-        color="backgroundDark"
-        height={['25vh', '20vh']}
-        width={['100vw', '100vw']}
-      />
-    </div>
-  );
+  <div>
+    <Triangle
+      color="secondaryLight"
+      height={['50vh', '20vh']}
+      width={['50vw', '50vw']}
+      invertY
+    />
+
+    <Triangle
+      color="primaryDark"
+      height={['20vh', '40vh']}
+      width={['75vw', '70vw']}
+      invertX
+    />
+
+    <Triangle
+      color="backgroundDark"
+      height={['25vh', '20vh']}
+      width={['100vw', '100vw']}
+    />
+  </div>
+);
+
+const MEDIA_QUERY_SMALL = '@media (max-width: 400px)';
+
+const Title = styled(Text)`
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: table;
+  border-bottom: ${(props) => props.theme.colors.primary} 5px solid;
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  width: calc(100% - ${CARD_HEIGHT});
+
+  ${MEDIA_QUERY_SMALL} {
+    width: calc(100% - (${CARD_HEIGHT} / 2));
+  }
+`;
+
+const CARD_HEIGHT = '200px';
+
+const ImageContainer = styled.div`
+  margin: auto;
+  width: ${CARD_HEIGHT};
+
+  ${MEDIA_QUERY_SMALL} {
+    width: calc(${CARD_HEIGHT} / 2);
+  }
+`;
+
+const ProjectTag = styled.div`
+  position: relative;
+  height: ${CARD_HEIGHT};
+
+  ${MEDIA_QUERY_SMALL} {
+    top: calc(-${CARD_HEIGHT} - 3.5px + (${CARD_HEIGHT} / 4));
+  }
+`;
+
+const Talk = ({ topic, description, presentationUrl, eventDate }) => (
+  <Card p={0}>
+    <Flex style={{ height: CARD_HEIGHT }}>
+      <TextContainer>
+        <span>
+          <Title my={2} pb={1} color="text">
+            {topic}
+          </Title>
+        </span>
+        <Text width={[1]} style={{ overflow: 'auto' }} color="text">
+          {description?.description}
+        </Text>
+      </TextContainer>
+      <ImageContainer>
+        <ProjectTag>
+          <Flex
+            style={{
+              float: 'right',
+            }}
+          >
+            <Box mx={1} fontSize={5}>
+              <SocialLink
+                name="Google Slides"
+                fontAwesomeIcon="google"
+                url={presentationUrl}
+              />
+            </Box>
+          </Flex>
+          <Hide query={MEDIA_QUERY_SMALL}>
+            <ImageSubtitle bg="backgroundDark">{eventDate}</ImageSubtitle>
+          </Hide>
+        </ProjectTag>
+      </ImageContainer>
+    </Flex>
+  </Card>
+);
 
 const Talks = () => (
-    <Section.Container id="about" Background={Background}>
-        <Section.Header name="Talks" icon="🎙" label="person" />
-        <StaticQuery
+  <Section.Container id="about" Background={Background}>
+    <Section.Header name="Talks" icon="🎙" label="talks" />
+    <StaticQuery
       query={graphql`
-      query TalksQuery {
-        allContentfulTalks {
-        nodes {
-            topic
-            presentationUrl
-                }
+        query TalksQuery {
+          allContentfulTalks {
+            nodes {
+              id
+              topic
+              description {
+                description
+              }
+              eventDate(formatString: "YYYY")
+              presentationUrl
+            }
+          }
         }
-      }
       `}
-      render={({allContentfulTalks}) => (
+      render={({ allContentfulTalks }) => (
         <CardContainer minWidth="350px">
-          {allContentfulTalks.nodes.map((p, i) => {
-              const presentationUrl = p?.presentationUrl
-              console.log(presentationUrl)
-            return <Fade bottom delay={i * 200} key={presentationUrl}>
-                <a href={presentationUrl} target="_blank" rel="noopener noreferrer">{p.topic}</a>
+          {allContentfulTalks.nodes.map((p, i) => (
+            <Fade bottom delay={i * 200} key={p.id}>
+              <Talk {...p} />
             </Fade>
-      })}
+          ))}
         </CardContainer>
       )}
     />
-    </Section.Container>
+  </Section.Container>
 );
 
 export default Talks;
