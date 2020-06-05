@@ -7,6 +7,7 @@ import Writing from '../sections/Writing';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Talks from '../sections/Talks';
+import Resume from '../sections/Resume';
 
 const IndexPage = () => (
   <Layout>
@@ -14,8 +15,8 @@ const IndexPage = () => (
     <Landing />
     <About />
     <Projects />
-    {/* <Writing /> */}
     <Talks/>
+    <Resume/>
     <Footer />
   </Layout>
 );
