@@ -33,11 +33,11 @@ const Background = () => (
 );
 
 const ProfilePicture = styled(Image)`
-  border-radius: 50%;
+  border-radius: 10%;
   transition: all 0.25s ease-out;
 
   &:hover {
-    border-radius: 20%;
+    border-radius: 5%;
   }
 `;
 
