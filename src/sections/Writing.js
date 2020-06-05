@@ -193,9 +193,7 @@ const Writing = () => (
         isMediumUserDefined && (
           <Section.Container id="writing" Background={Background}>
             <Section.Header name="Writing" icon="✍️" label="writing" />
-            <CardContainer>
-            Coming soon...
-            </CardContainer>
+            <CardContainer>Coming soon...</CardContainer>
           </Section.Container>
         )
       );

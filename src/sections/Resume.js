@@ -30,26 +30,30 @@ const Background = () => (
 );
 
 const Resume = () => (
-    <Section.Container id="about" Background={Background}>
-        <Section.Header name="Resume" icon="📑" label="person" />
-        <StaticQuery
+  <Section.Container id="resume" Background={Background}>
+    <Section.Header name="Resume" icon="📑" label="person" />
+    <StaticQuery
       query={graphql`
-      query ResumeQuery {
-        contentfulResume {
-          resumeUrl
+        query ResumeQuery {
+          contentfulResume {
+            resumeUrl
+          }
         }
-      }
       `}
-      render={({contentfulResume}) => {
-        const resumeUrl = contentfulResume?.resumeUrl
-        return <CardContainer minWidth="350px">
+      render={({ contentfulResume }) => {
+        const resumeUrl = contentfulResume?.resumeUrl;
+        return (
+          <CardContainer minWidth="350px">
             <Fade bottom key={resumeUrl}>
-                <a href={resumeUrl} target="_blank" rel="noopener noreferrer">Latest Resume</a>
+              <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                Latest Resume
+              </a>
             </Fade>
-        </CardContainer>
+          </CardContainer>
+        );
       }}
     />
-    </Section.Container>
+  </Section.Container>
 );
 
 export default Resume;

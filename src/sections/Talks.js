@@ -114,7 +114,7 @@ const Talk = ({ topic, description, presentationUrl, eventDate }) => (
 );
 
 const Talks = () => (
-  <Section.Container id="about" Background={Background}>
+  <Section.Container id="talks" Background={Background}>
     <Section.Header name="Talks" icon="🎙" label="talks" />
     <StaticQuery
       query={graphql`
