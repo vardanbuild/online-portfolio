@@ -7,8 +7,6 @@ import Fade from 'react-reveal/Fade';
 import { Text, Flex, Box } from 'rebass/styled-components';
 import styled from 'styled-components';
 import SocialLink from '../components/SocialLink';
-import ImageSubtitle from '../components/ImageSubtitle';
-import Hide from '../components/Hide';
 
 const Background = () => (
   <div>
@@ -59,7 +57,7 @@ const TextContainer = styled.div`
 const CARD_HEIGHT = '200px';
 
 const ImageContainer = styled.div`
-  margin: auto;
+  margin: 10% 0;
   width: ${CARD_HEIGHT};
 
   ${MEDIA_QUERY_SMALL} {
@@ -90,24 +88,19 @@ const Talk = ({ topic, description, presentationUrl, eventDate }) => (
         </Text>
       </TextContainer>
       <ImageContainer>
-        <ProjectTag>
-          <Flex
-            style={{
-              float: 'right',
-            }}
-          >
-            <Box mx={1} fontSize={5}>
-              <SocialLink
-                name="Google Slides"
-                fontAwesomeIcon="google"
-                url={presentationUrl}
-              />
-            </Box>
-          </Flex>
-          <Hide query={MEDIA_QUERY_SMALL}>
-            <ImageSubtitle bg="backgroundDark">{eventDate}</ImageSubtitle>
-          </Hide>
-        </ProjectTag>
+        <Flex
+          style={{
+            float: 'right',
+          }}
+        >
+          <Box mx={4} fontSize={100}>
+            <SocialLink
+              name="View Presentation"
+              fontAwesomeIcon="google"
+              url={presentationUrl}
+            />
+          </Box>
+        </Flex>
       </ImageContainer>
     </Flex>
   </Card>
