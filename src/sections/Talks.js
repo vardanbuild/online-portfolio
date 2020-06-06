@@ -42,6 +42,8 @@ const Title = styled(Text)`
   border-bottom: ${(props) => props.theme.colors.primary} 5px solid;
 `;
 
+const CARD_HEIGHT = '200px';
+
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,8 +55,6 @@ const TextContainer = styled.div`
     width: calc(100% - (${CARD_HEIGHT} / 2));
   }
 `;
-
-const CARD_HEIGHT = '200px';
 
 const ImageContainer = styled.div`
   margin: 10% 0;
