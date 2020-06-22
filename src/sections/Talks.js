@@ -95,8 +95,8 @@ const Talk = ({ topic, description, presentationUrl, eventDate }) => (
         >
           <Box mx={4} fontSize={100}>
             <SocialLink
-              name="View Presentation"
-              fontAwesomeIcon="google"
+              name={`View ${topic.toUpperCase() === 'YOUTUBE UPLOAD' ? 'Video' : 'Presentation'}`}
+              fontAwesomeIcon={topic.toUpperCase() === 'YOUTUBE UPLOAD' ? "youtube" : "google"}
               url={presentationUrl}
             />
           </Box>
@@ -112,7 +112,7 @@ const Talks = () => (
     <StaticQuery
       query={graphql`
         query TalksQuery {
-          allContentfulTalks {
+          allContentfulTalks(sort: {fields: updatedAt}) {
             nodes {
               id
               topic
