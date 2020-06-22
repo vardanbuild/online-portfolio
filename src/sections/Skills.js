@@ -3,7 +3,6 @@ import Section from '../components/Section';
 import Triangle from '../components/Triangle';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { Tag } from '@blueprintjs/core'
 import { Flex } from 'rebass';
 
 const Background = () => (
