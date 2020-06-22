@@ -76,7 +76,7 @@ const ProjectTag = styled.div`
 
 const Resume = () => (
   <Section.Container id="resume" Background={Background}>
-    <Section.Header name="Resume" icon="📑" label="person" />
+    <Section.Header name="Resume" icon="📑" label="resume" />
     <StaticQuery
       query={graphql`
         query ResumeQuery {
