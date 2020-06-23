@@ -63,17 +63,22 @@ const Skills = () => (
                         ))}
                     </Flex>
                     <Flex>
-                        {allContentfulSkillsTechStack?.edges.slice(3, 6).map(node => (
+                        {allContentfulSkillsTechStack?.edges.slice(3, 8).map(node => (
                             <span style={tagStyle}>{node?.node?.skill}</span>
                         ))}
                     </Flex>
                     <Flex>
-                        {allContentfulSkillsTechStack?.edges.slice(6, 9).map(node => (
+                        {allContentfulSkillsTechStack?.edges.slice(8, 12).map(node => (
                             <span style={tagStyle}>{node?.node?.skill}</span>
                         ))}
                     </Flex>
                     <Flex>
-                        {allContentfulSkillsTechStack?.edges.slice(9, 13).map(node => (
+                        {allContentfulSkillsTechStack?.edges.slice(12, 16).map(node => (
+                            <span style={tagStyle}>{node?.node?.skill}</span>
+                        ))}
+                    </Flex>
+                    <Flex>
+                        {allContentfulSkillsTechStack?.edges.slice(16, allContentfulSkillsTechStack?.edges.length).map(node => (
                             <span style={tagStyle}>{node?.node?.skill}</span>
                         ))}
                     </Flex>
