@@ -52,6 +52,7 @@ const TextContainer = styled.div`
   width: calc(100% - ${CARD_WIDTH});
   border: 1px solid #A9A9A9;
   border-radius: 8px;
+  background: white;
 
   ${MEDIA_QUERY_SMALL} {
     width: calc(100% - (${CARD_WIDTH} / 2));
