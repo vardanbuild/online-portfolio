@@ -20,7 +20,7 @@ const Background = () => (
     <Triangle
       color="primaryDark"
       height={['20vh', '40vh']}
-      width={['75vw', '70vw']}
+      width={['20vw', '70vw']}
       invertX
     />
 
