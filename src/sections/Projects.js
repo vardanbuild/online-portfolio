@@ -36,8 +36,9 @@ const Background = () => (
 );
 
 const CARD_HEIGHT = '200px';
+const CARD_WIDTH = '200px';
 
-const MEDIA_QUERY_SMALL = '@media (max-width: 400px)';
+const MEDIA_QUERY_SMALL = '@media (max-width: 500px)';
 
 const Title = styled(Text)`
   font-size: 14px;
@@ -52,31 +53,31 @@ const TextContainer = styled.div`
   flex-direction: column;
   padding: 10px;
   width: 100%;
-  width: calc(100% - ${CARD_HEIGHT});
+  width: calc(100% - ${CARD_WIDTH});
 
   ${MEDIA_QUERY_SMALL} {
-    width: calc(100% - (${CARD_HEIGHT} / 2));
+    width: calc(100% - (${CARD_WIDTH} / 2));
   }
 `;
 
 const ImageContainer = styled.div`
   margin: auto;
-  width: ${CARD_HEIGHT};
+  width: ${CARD_WIDTH};
 
   ${MEDIA_QUERY_SMALL} {
-    width: calc(${CARD_HEIGHT} / 2);
+    width: calc(${CARD_WIDTH} / 2);
   }
 `;
 
 const ProjectImage = styled(Image)`
-  width: ${CARD_HEIGHT};
+  width: ${CARD_WIDTH};
   height: ${CARD_HEIGHT};
   padding: 40px;
   margin-top: 0px;
 
   ${MEDIA_QUERY_SMALL} {
     height: calc(${CARD_HEIGHT} / 2);
-    width: calc(${CARD_HEIGHT} / 2);
+    width: calc(${CARD_WIDTH} / 2);
     margin-top: calc(${CARD_HEIGHT} / 4);
     padding: 10px;
   }
@@ -111,7 +112,7 @@ const Project = ({
               {name}
             </Title>
           </span>
-          <Text width={[1]} style={{ overflow: 'auto' }} color="text">
+          <Text width={[1]} style={{ overflow: 'auto', fontSize: "14px" }} color="text">
             {description}
           </Text>
         </TextContainer>
@@ -124,20 +125,20 @@ const Project = ({
                 float: 'right',
               }}
             >
-              <Box mx={1} fontSize={5}>
+              {repositoryUrl ? <Box mx={1} fontSize={5}>
                 <SocialLink
                   name="Check repository"
                   fontAwesomeIcon="github"
                   url={repositoryUrl}
                 />
-              </Box>
-              <Box mx={1} fontSize={5}>
+              </Box> : null}
+              {projectUrl ? <Box mx={1} fontSize={5}>
                 <SocialLink
                   name="See project"
                   fontAwesomeIcon="globe"
                   url={projectUrl}
                 />
-              </Box>
+              </Box> : null}
             </Flex>
             <ImageSubtitle bg="primary" color="white" y="bottom" x="right" round style={{ width: "max-content" }}>
               {type}
