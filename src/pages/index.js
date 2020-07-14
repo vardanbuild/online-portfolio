@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Talks from '../sections/Talks';
 import Resume from '../sections/Resume';
 import Skills from '../sections/Skills';
+import Certifications from '../sections/Certifications';
 
 const IndexPage = () => (
   <Layout>
@@ -16,6 +17,7 @@ const IndexPage = () => (
     <About />
     <Projects />
     <Talks />
+    <Certifications />
     <Skills />
     <Resume />
     <Footer />
