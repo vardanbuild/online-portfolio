@@ -44,30 +44,31 @@ const Title = styled(Text)`
   border-bottom: ${(props) => props.theme.colors.primary} 5px solid;
 `;
 
-const CARD_HEIGHT = '200px';
+const CARD_HEIGHT = '150px';
+const CARD_WIDTH = '100px';
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px;
   width: 100%;
-  width: calc(100% - ${CARD_HEIGHT});
+  width: calc(100% - ${CARD_WIDTH});
 
   ${MEDIA_QUERY_SMALL} {
-    width: calc(100% - (${CARD_HEIGHT} / 2));
+    width: calc(100% - (${CARD_WIDTH} / 2));
   }
 `;
 
 const ImageContainer = styled.div`
   margin: 10% 0;
-  width: ${CARD_HEIGHT};
+  width: ${CARD_WIDTH};
 
   ${MEDIA_QUERY_SMALL} {
-    width: calc(${CARD_HEIGHT} / 2);
+    width: calc(${CARD_WIDTH} / 2);
   }
 `;
 
-const ProjectTag = styled.div`
+const CertificationTag = styled.div`
   position: relative;
   height: ${CARD_HEIGHT};
 
@@ -91,37 +92,30 @@ const Certification = ({
             {description}
           </Title>
         </span>
-        <Text
-          width={[1]}
-          style={{ overflow: 'auto', fontSize: '14px' }}
-          color="text"
-        >
+        <br />
+        <Text width={[1]} style={{ overflow: 'auto' }} color="text">
           Provided by :{' '}
           <a href={vendorUrl} target="_blank">
             {vendor}
           </a>
         </Text>
       </TextContainer>
-
       <ImageContainer>
-        <ProjectTag>
+        <CertificationTag>
           <Flex
             style={{
               float: 'right',
             }}
           >
-            <Box mx={1} fontSize={5}>
+            <Box mx={4} fontSize={75}>
               <SocialLink
-                name="Check repository"
+                name="View Certificate"
                 fontAwesomeIcon="certificate"
                 url={link}
               />
             </Box>
           </Flex>
-          <Hide query={MEDIA_QUERY_SMALL}>
-            <ImageSubtitle bg="backgroundDark">{receivedAt}</ImageSubtitle>
-          </Hide>
-        </ProjectTag>
+        </CertificationTag>
       </ImageContainer>
     </Flex>
   </Card>
@@ -145,13 +139,19 @@ const Talks = () => (
         }
       `}
       render={({ allContentfulCertifications }) => (
-        <CardContainer minWidth="350px">
-          {allContentfulCertifications.nodes.map((p, i) => (
-            <Fade bottom delay={i * 200} key={p.id}>
-              <Certification {...p} />
-            </Fade>
-          ))}
-        </CardContainer>
+        <Flex
+          style={{
+            float: 'right',
+          }}
+        >
+          <CardContainer>
+            {allContentfulCertifications.nodes.map((p, i) => (
+              <Fade bottom delay={i * 200} key={p.id}>
+                <Certification {...p} />
+              </Fade>
+            ))}
+          </CardContainer>
+        </Flex>
       )}
     />
   </Section.Container>

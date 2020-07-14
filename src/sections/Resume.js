@@ -111,7 +111,7 @@ const Resume = () => (
                         float: 'left',
                       }}
                     >
-                      <Box mx={2} fontSize={50}>
+                      <Box mx={4} fontSize={60}>
                         <SocialLink
                           name="View Resume"
                           fontAwesomeIcon="google"
